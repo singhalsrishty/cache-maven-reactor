@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+	    <artifactId>cache-maven-reactor</artifactId>
+	    <groupId>com.mastercard.nof.ee</groupId>
+	    <version>1.0-SNAPSHOT</version>
+  	</parent>
+	
+	<artifactId>cache-application-poc</artifactId>
+	<name>cache-application-poc</name>
+	<packaging>jar</packaging>
+	<description>POC cache application</description>
+
+	<properties>
+		<cache.spring>1.0-SNAPSHOT</cache.spring>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<artifactId>cache-config-spring</artifactId>
+			<groupId>com.mastercard.nof.ee</groupId>
+    		<version>${cache.spring}</version>
+		</dependency>
+		
+	</dependencies>
+
+</project>

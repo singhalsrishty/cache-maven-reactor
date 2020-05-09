@@ -1,0 +1,3 @@
+com\mastercard\nof\ee\config\SpringCacheConfig.class
+com\mastercard\nof\ee\model\RateFile.class
+com\mastercard\nof\ee\service\CacheConfigSpringService.class
