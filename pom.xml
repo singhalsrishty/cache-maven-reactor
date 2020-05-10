@@ -33,11 +33,6 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-web</artifactId>
 	</dependency>
-		
-	<dependency>
-	    <groupId>org.springframework.boot</groupId>
-	    <artifactId>spring-boot-starter-cache</artifactId>
-	</dependency>
 	
 	<dependency>
 		<groupId>org.springframework.boot</groupId>
@@ -57,6 +52,49 @@
 		</exclusions>
 	</dependency>
   </dependencies>
+  
+  <profiles>
+  	<profile>
+  		<id>springcache</id>
+  		<activation>
+            <activeByDefault>false</activeByDefault>
+        </activation>
+        <properties>
+            <spring.profiles.active>springcache</spring.profiles.active>
+        </properties>
+  		<dependencies>
+  			<dependency>
+			    <groupId>org.springframework.boot</groupId>
+			    <artifactId>spring-boot-starter-cache</artifactId>
+			</dependency>
+  		</dependencies>
+  	</profile>
+  	<profile>
+  		<id>ehcache</id>
+  		<activation>
+            <activeByDefault>false</activeByDefault>
+        </activation>
+        <properties>
+            <spring.profiles.active>ehcache</spring.profiles.active>
+        </properties>
+  		<dependencies>
+  			<dependency>
+			    <groupId>org.springframework.boot</groupId>
+			    <artifactId>spring-boot-starter-cache</artifactId>
+			</dependency>
+	 		<dependency>
+			    <groupId>javax.cache</groupId>
+			    <artifactId>cache-api</artifactId>
+			    <version>1.1.1</version><!--$NO-MVN-MAN-VER$-->
+			</dependency>
+			<dependency>
+			    <groupId>org.ehcache</groupId>
+			    <artifactId>ehcache</artifactId>
+			    <version>3.8.1</version><!--$NO-MVN-MAN-VER$-->
+			</dependency>
+  		</dependencies>
+  	</profile>
+  </profiles>
 
   <build>
     <pluginManagement>
@@ -72,5 +110,6 @@
   <modules>  
     <module>cache-config-spring</module>
     <module>cache-application-poc</module>
+    <module>cache-config-ehcache</module>
   </modules>
 </project>

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -12,8 +13,10 @@ import org.springframework.stereotype.Service;
 import com.mastercard.nof.ee.model.RateFile;
 
 @Service
-public class CacheConfigSpringService {
-	private List<RateFile> rates;
+@CacheConfig(cacheNames = "rates")
+public class CacheConfigEhcacheService {
+	
+private List<RateFile> rates;
 	
 	/**
 	 * This method is used for cache population on start-up
@@ -59,5 +62,5 @@ public class CacheConfigSpringService {
 	public List<RateFile> getAllRates() {
 		return this.rates;
 	}
-	
+
 }

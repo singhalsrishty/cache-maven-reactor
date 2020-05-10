@@ -26,14 +26,14 @@ public class ApplicationController {
 	}
 	
 	@RequestMapping(method =  RequestMethod.GET, value = "/rates")
-	public List<RateFile> confirmRatesPopulated() {
+	public List<RateFile> getPopulatedCache() {
 		return this.applicationService.getAllRates();
 	}
 	
 	@RequestMapping(method =  RequestMethod.GET, value = "/rate")
 	public String lookupRate(@RequestParam("sourceCur") String sourceCurrency, @RequestParam("desCur") String 
 			destinationCurrency) {
-		return "Applicable Rate is: " + this.applicationService.lookupRate(sourceCurrency, destinationCurrency);
+		return "Applicable Buy Rate is: " + this.applicationService.lookupRate(sourceCurrency, destinationCurrency);
 	}
 	
 	@RequestMapping(method =  RequestMethod.POST, value = "/clear")

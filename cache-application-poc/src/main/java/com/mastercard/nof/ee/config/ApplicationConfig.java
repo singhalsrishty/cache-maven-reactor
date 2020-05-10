@@ -25,5 +25,7 @@ public class ApplicationConfig {
 	public ApplicationService applicationService() {
 		return new ApplicationService();
 	}
+	
+	
 
 }
