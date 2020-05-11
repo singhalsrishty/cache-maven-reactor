@@ -9,50 +9,34 @@
 
 ## Endpoints
 
-### 1. Populate Cache
+### 1. Update Cache
 - Request Type: POST
-- URL: http://localhost:9889/cacheapp/v1/cache/rates
+- URL: http://localhost:9889/cacheapp/v1/cache/rate
 - JSON Request: 
-	{ "rates" : [
-		{
+	
+	[{
 		"sourceCurrency" : "INR",
 		"destinationCurrency" : "ABB",
 		"midRate" : "90",
 		"buyRate" : "97", 
 		"sellRate" : "88", 
 		"dateTime" : "Fri May 06 2020"
-		},
-		
-		{
-		"sourceCurrency" : "INR",
-		"destinationCurrency" : "USD",
-		"midRate" : "56",
-		"buyRate" : "57", 
-		"sellRate" : "58", 
-		"dateTime" : "Fri May 06 2020"
-		}, 
-		
-		{
-		"sourceCurrency" : "INR",
-		"destinationCurrency" : "GBP",
-		"midRate" : "101",
-		"buyRate" : "102", 
-		"sellRate" : "103", 
-		"dateTime" : "Fri May 06 2020"
-		}]
-
-	}
+	}]
 	
-### 2. Check Cache Population
+### 2. Populate Cache
+- Request Type: POST
+- URL: http://localhost:9889/cacheapp/v1/cache/rates
+
+### 3. Check Cache Population
 - Request Type : GET
 - URL: http://localhost:9889/cacheapp/v1/cache/rates
 
-### 3. Cache Lookup
+### 4. Cache Lookup
 - Request Type: GET
 - URL: http://localhost:9889/cacheapp/v1/cache/rate
 - Query Params: sourceCur, desCur
 - Sample : http://localhost:9889/cacheapp/v1/cache/rate?sourceCur=INR&desCur=USD
 
-### 4. Clear Cache
+### 5. Clear Cache
 - Request Type: POST
 - URL: http://localhost:9889/cacheapp/v1/cache/clear
