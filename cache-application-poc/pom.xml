@@ -15,7 +15,6 @@
 
 	<properties>
 		<cache.spring>1.0-SNAPSHOT</cache.spring>
-		<cache.ehcache>1.0-SNAPSHOT</cache.ehcache>
 	</properties>
 	
 	<dependencies>
@@ -23,13 +22,7 @@
 			<artifactId>cache-config-spring</artifactId>
 			<groupId>com.mastercard.nof.ee</groupId>
     		<version>${cache.spring}</version>
-		</dependency>
-		<dependency>
-			<artifactId>cache-config-ehcache</artifactId>
-			<groupId>com.mastercard.nof.ee</groupId>
-    		<version>${cache.ehcache}</version>
-		</dependency>
-		
+		</dependency>		
 	</dependencies>
 
 </project>

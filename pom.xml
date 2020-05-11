@@ -57,7 +57,7 @@
   	<profile>
   		<id>springcache</id>
   		<activation>
-            <activeByDefault>false</activeByDefault>
+            <activeByDefault>true</activeByDefault>
         </activation>
         <properties>
             <spring.profiles.active>springcache</spring.profiles.active>
@@ -110,6 +110,5 @@
   <modules>  
     <module>cache-config-spring</module>
     <module>cache-application-poc</module>
-    <module>cache-config-ehcache</module>
   </modules>
 </project>
