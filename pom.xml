@@ -57,7 +57,7 @@
   	<profile>
   		<id>springcache</id>
   		<activation>
-            <activeByDefault>true</activeByDefault>
+            <activeByDefault>false</activeByDefault>
         </activation>
         <properties>
             <spring.profiles.active>springcache</spring.profiles.active>
