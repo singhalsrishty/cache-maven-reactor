@@ -4,8 +4,8 @@
 	- * Ehcache
 	
 ## Approach selection
-- use * mvn package -Pspringcache * to use approach 1
-- use * mvn package -Pehcache * to use approach 2
+- use * mvn clean install -Pspringcache * to use approach 1
+- use * mvn clean install -Pehcache * to use approach 2
 
 ## Endpoints
 
