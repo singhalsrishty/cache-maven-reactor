@@ -1,9 +1,8 @@
 package com.mastercard.nof.ee.service;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
@@ -15,10 +14,6 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 /**
  * Class to provide generic implementation of 
  * cache load, update and lookup
@@ -27,7 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @param <T>
  */
 @Service
-@CacheConfig(cacheNames = "${application.cache.rates.name}")
+@CacheConfig(cacheNames = "${application.cache.name}")
 public class SpringCacheService<T> {
 	
 	@Value("classpath:dbMap.json")
@@ -39,16 +34,9 @@ public class SpringCacheService<T> {
 	 *  This method is used to populate cache
 	 *  from json file
 	 */
-	public void populateCache() {
-		ObjectMapper objectMapper = new ObjectMapper();
-		try {
-			objectMapper.writeValue(new File(dbJsonFile.getFile().getAbsolutePath()), dbMap);
-		} catch (JsonGenerationException e) {
-			System.out.println("JsonGenerationException");
-		} catch (JsonMappingException e) {
-			System.out.println("JsonMappingException");
-		} catch (IOException e) {
-			System.out.println("IOException");
+	public void populateCache(Map<String, T> cacheList) {
+		for(Entry<String, T> entry: cacheList.entrySet()) {
+			dbMap.put(entry.getKey(), entry.getValue());
 		}
 	}
 	
@@ -58,9 +46,10 @@ public class SpringCacheService<T> {
 	 * @param params
 	 */
 	@CachePut(keyGenerator = "customLoadKeyGenerator")
-	public void updateCache(T cacheObject, String...params) {
+	public T updateCache(T cacheObject, String...params) {
 		String mapKey = String.join("-", params);
 		dbMap.put(mapKey, cacheObject);
+		return cacheObject;
 	}
 	
 	
@@ -70,7 +59,7 @@ public class SpringCacheService<T> {
 	 * @param params
 	 * @return
 	 */
-	@Cacheable()
+	@Cacheable(keyGenerator = "customLookupKeyGenerator")
 	public T lookupCache(String...params) {
 		System.out.println("Entered Cacheable Method: ");
 		

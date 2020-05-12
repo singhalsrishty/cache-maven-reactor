@@ -20,8 +20,8 @@ public class ApplicationController {
 	private ApplicationService applicationService;
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/rates")
-	public void populateRateCache() {
-		this.applicationService.populateRateCache();
+	public void populateRateCache(@RequestBody Map<String, RateBean> rateBeansMap) {
+		this.applicationService.populateRateCache(rateBeansMap);
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/rates")

@@ -22,7 +22,7 @@ import com.mastercard.nof.ee.service.SpringCacheService;
 @EnableCaching
 public class ApplicationConfig {
 	
-	@Value("${application.cache.rates.name}")
+	@Value("${application.cache.name}")
 	private String ratesCache;
 	
 	@Profile("springcache")
@@ -50,6 +50,22 @@ public class ApplicationConfig {
 			if(!Objects.isNull(params) && params.length > 1) {
 				String[] paramArr = 
 						IntStream.range(1, params.length).mapToObj(i -> params[i]).toArray(String[]::new);
+				key = String.join("-", paramArr);
+			}
+			return key;
+		}
+		
+	}
+	
+	@Component(value = "customLookupKeyGenerator")
+	public class CustomLookupKeyGenerator implements KeyGenerator {
+
+		@Override
+		public Object generate(Object target, Method method, Object... params) {
+			String key = null;
+			if(!Objects.isNull(params) && params.length > 0) {
+				String[] paramArr = 
+						IntStream.range(0, params.length).mapToObj(i -> params[i]).toArray(String[]::new);
 				key = String.join("-", paramArr);
 			}
 			return key;

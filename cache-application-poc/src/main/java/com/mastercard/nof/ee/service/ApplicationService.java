@@ -25,8 +25,8 @@ public class ApplicationService {
 	 * Method to populate cache (preferably on startup)
 	 * endpoint details available in readMe
 	 */
-	public void populateRateCache() {
-		this.springCacheService.populateCache();
+	public void populateRateCache(Map<String, RateBean> rateBeansMap) {
+		this.springCacheService.populateCache(rateBeansMap);
 	}
 	
 	/**
