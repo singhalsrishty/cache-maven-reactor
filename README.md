@@ -74,11 +74,8 @@
 		]
 	]
 	
-### 2. Check Cache Population
-- Request Type : GET
-- URL: http://localhost:9889/cacheapp/v1/cache/rates
 
-### 3. Update Cache
+### 2. Update Cache
 - Request Type : POST
 - URL: http://localhost:9889/cacheapp/v1/cache/rate
 - JSON Request: 
