@@ -14,8 +14,8 @@
 - URL: http://localhost:9889/cacheapp/v1/cache/rates
 - JSON Request: 
 	[
-		{
-			"INR-AUS": {
+		[
+			{
 				"sourceCurrency": "INR",
 				"destinationCurrency": "AUS",
 				"midRate": "89",
@@ -23,7 +23,7 @@
 				"sellRate": "91",
 				"dateTime": "Fri May 06 2020"
 			},
-			"INR-AMC": {
+			{
 				"sourceCurrency": "INR",
 				"destinationCurrency": "AMC",
 				"midRate": "72",
@@ -31,7 +31,7 @@
 				"sellRate": "74",
 				"dateTime": "Fri May 06 2020"
 			},
-			"INR-USD": {
+			{
 				"sourceCurrency": "INR",
 				"destinationCurrency": "USD",
 				"midRate": "86",
@@ -39,7 +39,7 @@
 				"sellRate": "88",
 				"dateTime": "Fri May 06 2020"
 			},
-			"INR-ACC": {
+			{
 				"sourceCurrency": "INR",
 				"destinationCurrency": "ACC",
 				"midRate": "61",
@@ -47,7 +47,7 @@
 				"sellRate": "63",
 				"dateTime": "Fri May 06 2020"
 			},
-			"INR-FRT": {
+			{
 				"sourceCurrency": "INR",
 				"destinationCurrency": "FRT",
 				"midRate": "44",
@@ -55,7 +55,7 @@
 				"sellRate": "46",
 				"dateTime": "Fri May 06 2020"
 			},
-			"INR-CUK": {
+			{
 				"sourceCurrency": "INR",
 				"destinationCurrency": "CUK",
 				"midRate": "55",
@@ -63,7 +63,7 @@
 				"sellRate": "57",
 				"dateTime": "Fri May 06 2020"
 			},
-			"INR-HUN": {
+			{
 				"sourceCurrency": "INR",
 				"destinationCurrency": "HUN",
 				"midRate": "33",
@@ -71,7 +71,7 @@
 				"sellRate": "35",
 				"dateTime": "Fri May 06 2020"
 			}
-		}
+		]
 	]
 	
 ### 2. Check Cache Population

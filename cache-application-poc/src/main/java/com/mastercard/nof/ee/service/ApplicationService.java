@@ -1,6 +1,6 @@
 package com.mastercard.nof.ee.service;
 
-import java.util.Map;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +25,10 @@ public class ApplicationService {
 	 * Method to populate cache (preferably on startup)
 	 * endpoint details available in readMe
 	 */
-	public void populateRateCache(Map<String, RateBean> rateBeansMap) {
-		this.springCacheService.populateCache(rateBeansMap);
+	public void populateRateCache(List<RateBean> rateBeanList) {
+		rateBeanList.stream().forEach(rateBean -> 
+				this.springCacheService.updateCache(rateBean, rateBean.getSourceCurrency(), 
+				rateBean.getDestinationCurrency()));
 	}
 	
 	/**
@@ -37,15 +39,6 @@ public class ApplicationService {
 	public void updateRateCache(RateBean rateFile) {
 		this.springCacheService.updateCache(rateFile, rateFile.getSourceCurrency(), 
 				rateFile.getDestinationCurrency());
-	}
-	
-	/**
-	 * Method to check cache population done from 
-	 * 	populateRateCache method
-	 * @return
-	 */
-	public Map<String, RateBean> getAllRates() {
-		return this.springCacheService.getCache();
 	}
 	
 	/**
@@ -60,7 +53,8 @@ public class ApplicationService {
 			 {
 		if(!Objects.isNull(cacheManager))
 			System.out.println("Using cache manager: " + cacheManager.getClass().getName());
-		RateBean rateBean = this.springCacheService.lookupCache(sourceCurrency, destinationCurrency);
+		RateBean rateBean = this.springCacheService.lookupCache(sourceCurrency, destinationCurrency).isPresent() ? 
+				this.springCacheService.lookupCache(sourceCurrency, destinationCurrency).get() : null ;
 		return Objects.isNull(rateBean) ? null : rateBean.getBuyRate();
 	}
 	

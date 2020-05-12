@@ -1,6 +1,6 @@
 package com.mastercard.nof.ee.controller;
 
-import java.util.Map;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,13 +20,8 @@ public class ApplicationController {
 	private ApplicationService applicationService;
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/rates")
-	public void populateRateCache(@RequestBody Map<String, RateBean> rateBeansMap) {
-		this.applicationService.populateRateCache(rateBeansMap);
-	}
-	
-	@RequestMapping(method = RequestMethod.GET, value = "/rates")
-	public Map<String, RateBean> getPopulatedCache() {
-		return this.applicationService.getAllRates();
+	public void populateRateCache(@RequestBody List<RateBean> rateBeanList) {
+		this.applicationService.populateRateCache(rateBeanList);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/rate")
